@@ -1,0 +1,168 @@
+1 )SYNTAX TO CREATE A TABLE :
+---------------------------------------------------------------------------------------------------
+Create table <table_name>(
+    <column_name> <data_type>
+	);
+---------------------------------------------------------------------------------------------------
+2) desc :- To check wheather thr table is exist in our server or not 
+SYNTAX :- desc <table_name>
+---------------------------------------------------------------------------------------------------
+3) alter :- if we eant to change or modify defination of any table  we use alter
+OPERATIONS ON ALTER :
+1)ADDING COLOUMN
+2)MODIFY DATATYPE
+3)RENAME COLOUMN
+4)REMOVE COLOUMN
+
+1) ADDING A NEW COLOUMN INTO THE TABLE :
+SYNTAX :- ALTER <TABLE_NAME> ADD <COLOUMN_NAME> <DATATYPE>
+---------------------------------------------------------------------------------------------------
+2) TO MODIFY THE DATATYPE OF THE COLOUMN :
+SYNTAX:- ALTER <TABLE_NAME> MODIFY COLOUMN <COLOUMN_NAME> <DATATYPE>
+---------------------------------------------------------------------------------------------------
+3) TO REMOVE A COLOUMN:
+SYNTAX:- ALTER <TABLE_NAME> DROP <COLOUMN_NAME>
+---------------------------------------------------------------------------------------------------
+4) TO RENAME THE COLOUMN NAME :
+SYNTAX:- ALTER <TABLE_NAME> RENAME <OLD_COLOUMN_NAME> TO <NEW_COLOUMN_NAME> ;
+---------------------------------------------------------------------------------------------------
+5) HOW TO CHANGE THE TABLE NAME :
+SYNTAX:- RENAME <EXISTING_TABLE_NAME> TO <NEW_TABLE_ NAME> 
+---------------------------------------------------------------------------------------------------
+4) TRUNCATE :- It is used to remove the data in one shot that is known as truncate
+SYNTAX:- truncate <table_name>
+---------------------------------------------------------------------------------------------------
+5) HOW TO INSERT DATA INTO THE COLOUMN :
+SYNTAX:- INSERT into <TABLE_NAME>(
+COLOUMN(COLOUMN_NAME1,COLOUMN_NAME2,COLOUMN_NAME3,COLOUMN_NAME4)
+VALUES(VALUES,VALUES,VALUES,VALUES)
+---------------------------------------------------------------------------------------------------
+6)DELETE DATA:
+SYNTAX:- DELETE FROM <TABLE_NAME> WHERE STUDENT_ID = ?
+
+7) UPDATE TABLE DATA :
+SYNTAX:- UPDATE <TABLE_NAME> SET <COLOUMN_NAME> = VALUE WHERE[CONDITION]
+---------------------------------------------------------------------------------------------------
+4) DRL/DQL
+---------------------------------------------------------------------------------------------------
+LOGICAL OPERATIONS :
+I) AND II) OR III) NOT
+I) AND:
+1)Q: select employee whose id = 100 and name should be steven :
+ANS : SELECT *FROM EMPLOYEE WHERE EMP_ID = 10 AND EMP_NAME ='steven';
+2)Q: select employee id = 10 or salary = 90000
+ANS: SELECT *FROM EMPLOYEE WHERE EMP_ID = 10 OR EMP_SALARY = 90000;
+---------------------------------------------------------------------------------------------------
+5) LIKE operator : The like operator is used in where clause to search for a specification pattern in column.
+
+SYNTAX : SELECT *FROM EMPLOYEE WHERE EMP_NAME LIKE 'a%';
+1Q) Give me the records where name starts with k:
+ANS : SELECT *FROM EMPLOYEE WHERE EMP_NAME LIKE 'K%';
+2Q) RECORDS WHOSE NAME ENDS WITH AI:
+ANS : SELECT *FROM EMPLOYEE WHERE EMP_NAME LIKE '%AI'
+3Q) Records whose name has a letter st in a string :
+ANS: SELECT *FROM EMPLOYEE WHERE EMP_NAME LIKE '%ST%';
+4Q) Records whose name starts with s and ends with kumar
+ANS: SELECT *FROM EMPLOYEE WHERE EMP_NAME LIKE 'S%' AND LIKE 'KUMAR';
+---------------------------------------------------------------------------------------------------
+6) IN-opeator: In opeator is used to test wheather a value is in specified list 
+= :- opeator deals with one value
+IN:- opeator deals with multiple values
+1Q) Give me the records where department_id is 10 ,20,30
+ANS: SELECT *FROM EMPLOYEE WHERE DEPARTMENT_ID IN(10,20,30);
+2Q) Give me the records whose name starts with sai, madhu, pavan
+ANS : SELECT *FROM EMPLOYEE WHERE FIRST_NAME IN('SAI','MADHU','PAVAN');
+---------------------------------------------------------------------------------------------------
+7)CONCATTENATION opeator:- combines two or more strings or columns
+1Q) :show me the emp_id salary*10 and append with k and combine both first_name and last_name of all departments (10,20,30)
+ANs : SELECT 'THIS IS MY EMP_ID :-'|| EMP_ID,SALARY*10 ||'k' , FRIST_NAME||LAST_NAME FROM DEPARTMENT_ID IN (10,20,30);
+---------------------------------------------------------------------------------------------------
+8) ANY opeator:- it returns the higher value than:
+1Q) Give me the salary whose is from  (4200,4800,6000)
+ANS: SELECT *FROM EMPLOYEE WHERE SALARY > ANY (4600,4800,6000);
+                          [OR]
+     SELECT *FROM EMPLOYEE WHERE SALARY>4200 OR SALARY>4800 OR SALARY > 60000;
+---------------------------------------------------------------------------------------------------
+9) ALL opeator :- it returns the higher value than the given 
+1Q) SELECT *FROM EMPLOYEE WHERE SALARY> ALL (4200,4800,6000);
+---------------------------------------------------------------------------------------------------
+10) BETWEEN opeator :- it is a range operator used to find the range.
+1Q) Give me the record whose salary is >1400 and <24000;
+ANS: SELECT *FROM EMPLOYEE WHERE SALARY BETWEEN 1400 AND 24000;
+---------------------------------------------------------------------------------------------------
+11) ISNULL opeator :- It gives the record of null values in the specified colunm :
+1Q) Give me the records where employees phone number is null :
+ANS: SELECT *FROM EMPLOYEE WHERE PHONE_NUM ISNULL;
+---------------------------------------------------------------------------------------------------
+12) ORDER BY CLAUSE :- SORTS ALL THE VALUES 
+1Q) SET THE SALARY IN ASCENDING ORDER :
+ANS: SELECT *FROM EMPLOYEE ORDER BY SALARY; #Default it is in ascending order
+ANS :SELECT *FROM EMPLOYEE ORDER BY SALARY DESC; OR ASC;
+---------------------------------------------------------------------------------------------------
+TYPES OF FUNCTIONS :-
+            |->CHARACTER 
+			|
+			|->NUMBER
+			|
+			|->DATE
+			|
+			|->CONVERSION
+			|
+			|->AGGREGATE
+			|
+---------------------------------------------------------------------------------------------------			
+1Q) CHARACTER--
+               |->LOWER
+			   |
+			   |->UPPER
+			   |
+			   |->INTICAP
+			   |
+			   |->CONCAT
+			   |
+			   |->LENGTH
+			   |
+			   |->TRIM
+			   |
+			   |->LTRIM
+			   |
+			   |->RTRIM
+			   |
+			   |->LPAD
+			   |
+			   |->RPAD
+			   |
+			   |->SUBSRING
+			   |
+			   |->INSTRING
+			   |
+			   |->ASCII
+			   |
+			   |->REPLACE
+
+1) LOWER :- CONVERTS THE TEXT FROM UPPER CASE TO LOWER CASE 
+   SELECT LOWER(FIRST_NAME) FROM EMPLOYEE;
+2) UPPER :- CONVERTS THE TEXT TO UPPERCASE:
+   SELECT UPPER(FIRST_NAME) FROM EMPLOYEE WHERE EMP_ID IN (10,20,30)
+3) INITCAP:-IT IS USED TO CONVERT THE FIRST LETTER OF THE STRING TO UPPERCASE:
+   SELECT INTICAP(FIRST_NAME) FROM EMPLOYEE WHERE EMP_ID IN (100,101,102);
+4) CONCAT:- COMBINES TWO COLOUMN:
+   SELECT CONCAT(FRIST_NAME,LAST_NAME) FROM EMPLOYEE WHERE EMP_ID IN (10,20,30);
+5) LENGTH:- GIVES HOW MANY CAHR AVI IN THE STRING:
+   SELECT LENGTH(FIRST_NAME) FROM EMPLOYEE WHERE DEPARTMENT_ID(10,20,30);
+6) LPAD:- TO ADD SYMBOLS , SPECIAL CHARS,ETC IN THE LEFT HAND SIDE OF THE STRING:
+   SELECT FIRST_NAME,LENGTH(FIRST_NAME),LPAD(FIRST_NAME,9,'***') FROM EMPLOYEE WHERE EMP_ID=100;
+7) LTRIM:- REMOVES THE SPECIAL CHARS , SPECIAL SYMBOLS SPACES ETC IN THE LEFT SIDE OF THE STRING :
+   SELECT FIRST_NAME,LTRIM(FIRST_NAME '*') FROM EMPLOYEE WHERE EMP_ID=100;
+8) SAME AS FOLLOWS FOR R TRIM :
+9) TRIM :- REMOVES THE SPECIAL CHARS IN THE STRING :
+   SELECT FIRST_NAME,TRIM(BOTH '@' FROM FIRST_NAME) FROM EMPLOYEE WHERE EMP_ID = 100;
+   LEADING :- REMOVES LEFT SIDE := TRIM(LEADING '@')
+   TRAILING :- REMOVES RIGHT SIDE := TRIM(TRAILING '@')
+   TRIM(FIRST_NAME) :- TO REMOVE THE SPACES IN THE STRING
+10) NVL :- TO ADD A SPECIAL STRING WHEN THE COLOUMN IS NULL:
+    SELECT FIRST_NAME,LAST_NAME NVL(FIRST_NAME,'NOT APPLICABLE') WHERE EMPLOYEE IN (100,101);
+11) NVL2:-
+       1Q) IF FIRST_NAME IS NULL THEN PRINT NOT APPLICABLE IF FIRST_NAME EXIST THEN PRINT FIRST_NAME:
+	SELECT FRIST_NAME,LAST_NAME,NVL2(FIRST_NAME,FIRST_NAME,'NOT APPLICABLE') FROM EMPLOYEE WHERE EMP_ID IN(10,11);
+			   
