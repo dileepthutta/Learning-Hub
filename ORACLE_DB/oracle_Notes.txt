@@ -1,12 +1,12 @@
 1 )SYNTAX TO CREATE A TABLE :
----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Create table <table_name>(
     <column_name> <data_type>
 	);
----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 2) desc :- To check wheather thr table is exist in our server or not 
 SYNTAX :- desc <table_name>
----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 3) alter :- if we eant to change or modify defination of any table  we use alter
 OPERATIONS ON ALTER :
 1)ADDING COLOUMN
@@ -16,35 +16,39 @@ OPERATIONS ON ALTER :
 
 1) ADDING A NEW COLOUMN INTO THE TABLE :
 SYNTAX :- ALTER <TABLE_NAME> ADD <COLOUMN_NAME> <DATATYPE>
----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 2) TO MODIFY THE DATATYPE OF THE COLOUMN :
 SYNTAX:- ALTER <TABLE_NAME> MODIFY COLOUMN <COLOUMN_NAME> <DATATYPE>
----------------------------------------------------------------------------------------------------
+         ALTER TABLE department MODIFY dep_id INT primary key;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 3) TO REMOVE A COLOUMN:
 SYNTAX:- ALTER <TABLE_NAME> DROP <COLOUMN_NAME>
----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 4) TO RENAME THE COLOUMN NAME :
 SYNTAX:- ALTER <TABLE_NAME> RENAME <OLD_COLOUMN_NAME> TO <NEW_COLOUMN_NAME> ;
----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 5) HOW TO CHANGE THE TABLE NAME :
 SYNTAX:- RENAME <EXISTING_TABLE_NAME> TO <NEW_TABLE_ NAME> 
----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 4) TRUNCATE :- It is used to remove the data in one shot that is known as truncate
 SYNTAX:- truncate <table_name>
----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 5) HOW TO INSERT DATA INTO THE COLOUMN :
 SYNTAX:- INSERT into <TABLE_NAME>(
 COLOUMN(COLOUMN_NAME1,COLOUMN_NAME2,COLOUMN_NAME3,COLOUMN_NAME4)
 VALUES(VALUES,VALUES,VALUES,VALUES)
----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 6)DELETE DATA:
 SYNTAX:- DELETE FROM <TABLE_NAME> WHERE STUDENT_ID = ?
-
+         DELETE <TABLE_NAMAE>
 7) UPDATE TABLE DATA :
 SYNTAX:- UPDATE <TABLE_NAME> SET <COLOUMN_NAME> = VALUE WHERE[CONDITION]
----------------------------------------------------------------------------------------------------
+         
+		 HOW TO DECREMENT BY ONE YEAR:
+		 update employee1 set hiredate = add_months(hiredate ,-12);
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 4) DRL/DQL
----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 LOGICAL OPERATIONS :
 I) AND II) OR III) NOT
 I) AND:
@@ -52,7 +56,7 @@ I) AND:
 ANS : SELECT *FROM EMPLOYEE WHERE EMP_ID = 10 AND EMP_NAME ='steven';
 2)Q: select employee id = 10 or salary = 90000
 ANS: SELECT *FROM EMPLOYEE WHERE EMP_ID = 10 OR EMP_SALARY = 90000;
----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 5) LIKE operator : The like operator is used in where clause to search for a specification pattern in column.
 
 SYNTAX : SELECT *FROM EMPLOYEE WHERE EMP_NAME LIKE 'a%';
@@ -64,7 +68,7 @@ ANS : SELECT *FROM EMPLOYEE WHERE EMP_NAME LIKE '%AI'
 ANS: SELECT *FROM EMPLOYEE WHERE EMP_NAME LIKE '%ST%';
 4Q) Records whose name starts with s and ends with kumar
 ANS: SELECT *FROM EMPLOYEE WHERE EMP_NAME LIKE 'S%' AND LIKE 'KUMAR';
----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 6) IN-opeator: In opeator is used to test wheather a value is in specified list 
 = :- opeator deals with one value
 IN:- opeator deals with multiple values
@@ -72,45 +76,45 @@ IN:- opeator deals with multiple values
 ANS: SELECT *FROM EMPLOYEE WHERE DEPARTMENT_ID IN(10,20,30);
 2Q) Give me the records whose name starts with sai, madhu, pavan
 ANS : SELECT *FROM EMPLOYEE WHERE FIRST_NAME IN('SAI','MADHU','PAVAN');
----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 7)CONCATTENATION opeator:- combines two or more strings or columns
 1Q) :show me the emp_id salary*10 and append with k and combine both first_name and last_name of all departments (10,20,30)
 ANs : SELECT 'THIS IS MY EMP_ID :-'|| EMP_ID,SALARY*10 ||'k' , FRIST_NAME||LAST_NAME FROM DEPARTMENT_ID IN (10,20,30);
----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 8) ANY opeator:- it returns the higher value than:
 1Q) Give me the salary whose is from  (4200,4800,6000)
 ANS: SELECT *FROM EMPLOYEE WHERE SALARY > ANY (4600,4800,6000);
                           [OR]
      SELECT *FROM EMPLOYEE WHERE SALARY>4200 OR SALARY>4800 OR SALARY > 60000;
----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 9) ALL opeator :- it returns the higher value than the given 
 1Q) SELECT *FROM EMPLOYEE WHERE SALARY> ALL (4200,4800,6000);
----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 10) BETWEEN opeator :- it is a range operator used to find the range.
 1Q) Give me the record whose salary is >1400 and <24000;
 ANS: SELECT *FROM EMPLOYEE WHERE SALARY BETWEEN 1400 AND 24000;
----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 11) ISNULL opeator :- It gives the record of null values in the specified colunm :
 1Q) Give me the records where employees phone number is null :
-ANS: SELECT *FROM EMPLOYEE WHERE PHONE_NUM ISNULL;
----------------------------------------------------------------------------------------------------
+ANS: SELECT *FROM EMPLOYEE WHERE PHONE_NUM IS NULL;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 12) ORDER BY CLAUSE :- SORTS ALL THE VALUES 
 1Q) SET THE SALARY IN ASCENDING ORDER :
 ANS: SELECT *FROM EMPLOYEE ORDER BY SALARY; #Default it is in ascending order
 ANS :SELECT *FROM EMPLOYEE ORDER BY SALARY DESC; OR ASC;
----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 TYPES OF FUNCTIONS :-
             |->CHARACTER 
 			|
 			|->NUMBER
 			|
-			|->DATE
+			|->DATE : TO_DATE('5-Jan-2023', 'DD-MON-YYYY')
 			|
 			|->CONVERSION
 			|
 			|->AGGREGATE
 			|
----------------------------------------------------------------------------------------------------			
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------			
 1Q) CHARACTER--
                |->LOWER
 			   |
@@ -165,4 +169,201 @@ TYPES OF FUNCTIONS :-
 11) NVL2:-
        1Q) IF FIRST_NAME IS NULL THEN PRINT NOT APPLICABLE IF FIRST_NAME EXIST THEN PRINT FIRST_NAME:
 	SELECT FRIST_NAME,LAST_NAME,NVL2(FIRST_NAME,FIRST_NAME,'NOT APPLICABLE') FROM EMPLOYEE WHERE EMP_ID IN(10,11);
-			   
+12) INSTR:-IT IS USED TO FIND THE POSITION OF THE SUB-STRING FROM THE STRING.
+    SYNTAX:- INSTR(STRING/COLOUMN,SUB-STRING,[Start_position],[Occurance])
+	Eg 1:- INSTR('CORPORATE FLOOR','OR',4,2)
+				 1234567891011121314)  1ST occurence = 4 && 2nd occurence = 2 if second occurence=even so 
+				 occurence=2 so move from right to left
+				 occurence = -15 move left to right o/p=0
+	O/P:-   14 =>(BECAUSE IF THE SECOND Occurance IS EVEN IT MOVES TO RIGHT TO LEFT)
+13)To_char :- it is a function to store any type of data into an char format data
+    TO CONVERT THE SALARY INTO CHARACTER:
+	SELECT To_char(salary) ,salary from EMPLOYEE where emp_id=100;
+14)TO_NUMBER:- TO CONVERT THE CHARACTER TO NUMBER
+     TO CONVERT THE VARCHAR INTO NUMBER:-
+	 SELECT TO_NUMBER(DEPARTMENT_ID),DEPARTMENT_ID FROM EMPLOYEE WHERE emp_id=1;
+15) floor():- converts the decimal to number format
+    select floor(salary),salary from employee where emp_id=1;
+16) ceil :-it is used to upper side of the floor value in number format
+    select ceil(marks), marks from student where student_id=1;
+17) power():- Gives the power of any number or column
+    select power(9,2) from dual;
+	select power(salary,2),salary from employee;
+18) Round():- it will round the decimal number to some exact number 
+    select round(15.91,1) from dual;
+19) moduls():- gives the moduls values of the number:-
+    select mod(10,2) from dual;
+	select mod(student_id),student_id from student;
+19) AGGREGATE function:- MIN(),MAX(),AVG().
+    SELECT MIN(SALARY),MAX(SALARY),AVG(SALARY) FROM EMPLOYEE WHERE DEPARTMENT_ID IN (101,102,103);
+20) COUNT():- COUNTS THE NUMBER OF ROWS IN THE TABLE:-
+    SELECT COUNT(SALARY) ,SUM(SALARY) FROM EMPLOYEES;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+13) Group by clause():- Group by clause is used to create the groups of rows of a column.
+            Eg :- Group of data with similar department_id will created
+			
+    Group each data with department id:
+    SELECT DEPARTMENT_ID,count(*) from employee group by department_id;	
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+14) Having clause() :- is a CONDITION clause used with group by clause in the select statement to filter group pf rows based on a specified
+CONDITION.
+Eg:- display the department_id from employees table in which employee count is greater than 3?.
+    SELECT department_id,count(department_id) from employee where salary >25000 group by department_id having count(department_id)>3; 
+Eg 1:Display the count of the employee table where the count of the department_id is >3:?
+     SELECT department_id,count(department_id) from employee group by department_id having count(department_id)>3;	
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+15) Constraint :- is a set of insertion rules that is used to perform in the colunm.
+Types of Constraint:
+					|->NOT NULL
+					|->unique key
+					|->primary key
+					|->foreign key
+					|->check key
+1)not null :- It does not allow the null values into the colunm
+2)unique key:- It maintains uniwue data in particular colunm and its also allows null VALUES.
+3)primary key:- is a combination of unique key and Not null key
+4)Foreign key:- It is used to make the relation BETWEEN two colunms of two tables
+->If the values present in the parent in parent table then only you can insert the value in child table.
+->You cant delete any data from parent table until an unless you do nit delete from the child table 
+Creation of table while adding the forigen key:
+Create table department(
+dep_id numeric(20),
+dep_name varchar(20),
+Constraint department_pk primary key (dep_id)
+);
+Create table EMPLOYEE(
+emp_id numeric(10),
+emp_name varchar2(50),
+department_id numeric(10),
+Constraint fk_employee,
+foreignn key (department_id),
+references department(dep_id)
+);
+5)check Constraint:- Check Constraint is nothing but its allows you to specify a CONDITION on each rows in a table and before inserting it will check that CONDITION.
+---->TO CREATE A CHECK Constraint ON TABLE WHICH MY TABLE SHOULD ACCEPT ONLY MALE AND FEMALE ?.
+Create Table suppliers(
+suppliers_id numeric(4),
+suppliers_name varchar(50),
+gender varchar(10),
+constraint check_gender
+CHECK (gender IN ('Male','Female'))
+);
+-----> Create a table in which the supplier id must me in between 100 and 9999
+create suppliers(
+supplier_name varchar(20),
+supplier_id int,
+constraint check_supplier_id check (supplier_id BETWEEN 100 and 9999);
+)
+TO alter the table:
+alter table suppliers add constraint check_supplier_id CHECK(SUPPELIER_ID BETWEEN 100 AND 9999);
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+16) TYPES OF JOINS:-Join is used to retrive the data from one or more than one table from the database
+|->CORSS JOINS
+|->INNER JOINS
+|->SELF JOINS
+|->OUTER JOIN--
+               |->Right outer JOIN--
+			   |->Left Outer JOIN--
+			   |->Full outer JOIN--
+1) cross join:-   Syntax:- Select *from table1, table2;
+NumberOfRowsInTable * NumberOfRowsInTable = Total Number Of Rows of Cross Join 
+                 3  *   4                  = 12
+Select from employee e ,department d order by e.emp_id , d.dep_id;
+
+2)Inner join :- It is used to get the common information from the multiple table.
+->Inner join only returns only those rows or records from both the table which satisfies the join CONDITION.
+Syntax := SELECT column_name FROM Table1 INNER JOIN Table2 ON table1.column_name = table2.column_name;     
+Select Employee_id ,first_name,d.Dep_id , d.dep_name from employees e inner join department d on e.DEPARTMENT_ID=d.dep_id order by d.Dep_id;
+
+3)Left outer join := It is used to get the information from the left hand side of the table.
+->Left outer join returns all rows from the left side table and from the right side of table.
+It returns only those rows which fulfill the join condition.
+Syntax :=SELECT column_name from table1 left outer join table2 ON table1.column_name = table2.column_name;        
+
+select employee_id,first_name,e.department_id,d.dep_name,d.dep_id from employees e left outer join department d on e.department_id = d.dep_id;   
+
+4) Right outer join := It gives all the records from the right hand side of the table and only gives the matching rows from the right hand side.
+->Right Outer join returns all rows from the right side table and from left side of table.
+->It returns omlythose rows which fullfill the join condition.
+Syntax:=SELECT column_name from table1 right outer join table2 ON table1.column_name = table2.column_name;
+select employee_id,first_name,d.dep_id,d.dep_name,d.dep_id,d.course,d.branch,d.roll_number from employees e right outer join department d on e.department_id = d.dep_id;
+
+5) FULL OUTER JOIN :- Its a combination of the right outer join and left outer join is known as FULL UPPER JOIN.
+Synatx:- select COLOUMN_NAME FROM table1 full outer join table2 ON table1.column_name=table2.column_name.
+ select *from employees e full outer join department d on e.department_id = d.dep_id;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 17) SUBQuery :=  It is a combination of two query in which we involve one parent query and one child query child query will give the input to the parent query and that input will used by the parent 
+ and based upon that query it will give the output.
+It over writess the child query in place of parnet query.
+select Employee_id , department_id from employees where department_id in (SELECT dep_id from department where roll_number like '23%');
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 18)set OPERATIONS:= set opeators are used to join the results of twwo or more select statements.
+ Types of set opeators
+					 |->UNION
+					 |->UNION ALL
+					 |->INTERSECT
+					 |->MINUS
+
+1)UNION :=> UNION opeator combines the output of two queries or more than two queries.
+It will remove the dublicate data.
+select department_id,first_name from employees union select dep_id,Roll_number from department order by first_name;
+
+2)UNION ALL => union all operator joins output of two or more than two table.It allows the duplicates data also.
+In the any set opeator both datatype of both querys should be identical other wise it will throw an error and 
+the number of rows of first query is equal to the second query.
+select department_id,first_name from employees union all select dep_id,Roll_number from department order by DEPARTMENT_ID;
+
+3)INTERSECT :) Intersect operator is used to get the common rows from both the queries
+select department_id from employees intersect select dep_id from department;
+
+4)MINUS :) MINUS set operator results of two queries and returns those rows from query output which are not available in the second query o/p.
+It substracts the common information and gives the un common information.
+select department_id from employees minus select dep_id from department;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+19) VIEW :) A view is a virtual table or windows on the table which derive its data from one or more tables.
+It stores all the data from the specificed view name.
+Create OR REPLACE VIEW emp_details AS
+       select first_name,last_name from employees where department_id between (10,30);
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+19) SYNONYM :) is a alternative name for the object such as table,view,SEQUENCE stored PROCEDURES and other database object.
+->IT is also known as another copy for the table. If we change any information in the main table then it will also effect the alternative table also.
+create or replace public synonym employee_syn1 for hr.employees;
+
+select *from employee_syn1;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+20) SEQUENCE :- is an object in oracle that is used to generate a auto number. 
+Synatx :=> Create SEQUENCE sequance_name
+                  MINVALUE value
+				  MAXVALUE value
+				  START WITH value
+				  INCREMENT BY value
+				  CACHE value;
+1) NEXTVAL :- It is used to print the next value.
+2) CURRVAL := IT is used to print the current value.
+
+
+create SEQUENCE emp_seq
+        MINVALUE 1
+		MAXVALUE 99999999999
+		START WITH 1
+		INCREMENT BY 2
+		CACHE 20;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1) Write query to display 10% of salary from employee where emp_id not equal tp 100 or last_name is king;
+select salary *0.10 as "10% of salary " from employees where employee_id !=100 or last_name='King';
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
