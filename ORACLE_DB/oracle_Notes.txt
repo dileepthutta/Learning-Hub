@@ -349,6 +349,56 @@ create SEQUENCE emp_seq
 		INCREMENT BY 2
 		CACHE 20;
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+21)Pseudo columns :- Its a in-build column which is available in every table .This column is directely supported by oracle and no need to create it or insert
+		     any values into it.
+->When ever we create it this column will be automatically created.
+Types of Pseudo COLOUMN:
+i) ROWID :- Address of the row.
+ii)ROWNUM :- It returns the numbering of the row.
+iii)NEXTVAL :-Used with sequences to get next/current value
+IV) CURRVAL :-Used with sequences to get next/current value
+V) LEVEL :- used in hierarchical quries (Connect by).
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+22) DUAL table :- It is a dummy table or place holder which is provided by oracle in default there is a row and colunm in given by oracle.
+
+Eg :- retrive the Date from of the data base:
+querie :- Select *from dual;
+
+Eg :- Concat Two Strings :
+querie :- select 'Dileep' || 'T' from dual.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+23) Substitution opeator :-If we want to give the value at runtime we use Substitution operator.
+
+Eg : It Takes an input from User :-
+Select *from employees where employee_id =:Enter_Employee_ID;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+24) synonym :- 
+Syntax :- Create [OR REPLACE] [PUBLIC]
+		  SYNONYM [SCHEMA.] SYNONYM_NAME
+		  FOR [SCHEMA.] OBJECT_NAME;
+		  
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+25) PLSQL :=IT is a programming language provided by Oracle Sql.
+          ->Here We can Write multiple queries.
+		  
+		  
+i) Hello World program in PLSQL :
+query:
+      BEGIN
+	  DBMS_OUTPUT.PUT_LINE('HELLO WORLD');
+	  END;
+	  /
+ii) Accessing Variable :
+query: 
+	DECLARE 
+	myVar number:= 100;
+	BEGINDBMS_OUTPUT.PUT_LINE('It us my RollNumber :'||myVar);
+	END;
+	/
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
