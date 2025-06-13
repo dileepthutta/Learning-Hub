@@ -1,48 +1,48 @@
-1 )SYNTAX TO CREATE A TABLE :
+1 )Syntax TO CREATE A TABLE :
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Create table <table_name>(
     <column_name> <data_type>
 	);
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-2) desc :- To check wheather thr table is exist in our server or not 
-SYNTAX :- desc <table_name>
+2) DESC :- To check wheather thr table is exist in our server or not 
+Syntax :- DESC <table_name>
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-3) alter :- if we eant to change or modify defination of any table  we use alter
+3) ALTER :- if we eant to change or modify defination of any table  we use ALTER
 OPERATIONS ON ALTER :
-1)ADDING COLOUMN
+1)ADDING COLUMN
 2)MODIFY DATATYPE
-3)RENAME COLOUMN
-4)REMOVE COLOUMN
+3)RENAME COLUMN
+4)REMOVE COLUMN
 
-1) ADDING A NEW COLOUMN INTO THE TABLE :
-SYNTAX :- ALTER <TABLE_NAME> ADD <COLOUMN_NAME> <DATATYPE>
+1) ADDING A NEW COLUMN INTO THE TABLE :
+Syntax :- ALTER <TABLE_NAME> ADD <COLOUMN_NAME> <DATATYPE>
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-2) TO MODIFY THE DATATYPE OF THE COLOUMN :
-SYNTAX:- ALTER <TABLE_NAME> MODIFY COLOUMN <COLOUMN_NAME> <DATATYPE>
+2) TO MODIFY THE DATATYPE OF THE COLUMN :
+Syntax:- ALTER <TABLE_NAME> MODIFY COLUMN <COLOUMN_NAME> <DATATYPE>
          ALTER TABLE department MODIFY dep_id INT primary key;
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-3) TO REMOVE A COLOUMN:
-SYNTAX:- ALTER <TABLE_NAME> DROP <COLOUMN_NAME>
+3) TO REMOVE A COLUMN:
+Syntax:- ALTER <TABLE_NAME> DROP <COLOUMN_NAME>
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-4) TO RENAME THE COLOUMN NAME :
-SYNTAX:- ALTER <TABLE_NAME> RENAME <OLD_COLOUMN_NAME> TO <NEW_COLOUMN_NAME> ;
+4) TO RENAME THE COLUMN NAME :
+Syntax:- ALTER <TABLE_NAME> RENAME <OLD_COLOUMN_NAME> TO <NEW_COLOUMN_NAME> ;
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 5) HOW TO CHANGE THE TABLE NAME :
-SYNTAX:- RENAME <EXISTING_TABLE_NAME> TO <NEW_TABLE_ NAME> 
+Syntax:- RENAME <EXISTING_TABLE_NAME> TO <NEW_TABLE_ NAME> 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-4) TRUNCATE :- It is used to remove the data in one shot that is known as truncate
-SYNTAX:- truncate <table_name>
+4) TRUNCATE :- It is used to remove the data in one shot that is known as TRUNCATE
+Syntax:- TRUNCATE <table_name>
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-5) HOW TO INSERT DATA INTO THE COLOUMN :
-SYNTAX:- INSERT into <TABLE_NAME>(
-COLOUMN(COLOUMN_NAME1,COLOUMN_NAME2,COLOUMN_NAME3,COLOUMN_NAME4)
-VALUES(VALUES,VALUES,VALUES,VALUES)
+5) HOW TO INSERT DATA INTO THE COLUMN :
+Syntax:- INSERT into <TABLE_NAME>(
+COLUMN(COLOUMN_NAME1,COLOUMN_NAME2,COLOUMN_NAME3,COLOUMN_NAME4)
+VALUES (value1, value2, value3, value4)
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 6)DELETE DATA:
-SYNTAX:- DELETE FROM <TABLE_NAME> WHERE STUDENT_ID = ?
+Syntax:- DELETE FROM <TABLE_NAME> WHERE STUDENT_ID = ?
          DELETE <TABLE_NAMAE>
 7) UPDATE TABLE DATA :
-SYNTAX:- UPDATE <TABLE_NAME> SET <COLOUMN_NAME> = VALUE WHERE[CONDITION]
+Syntax:- UPDATE <TABLE_NAME> SET <COLOUMN_NAME> = VALUE WHERE[CONDITION]
          
 		 HOW TO DECREMENT BY ONE YEAR:
 		 update employee1 set hiredate = add_months(hiredate ,-12);
@@ -59,7 +59,7 @@ ANS: SELECT *FROM EMPLOYEE WHERE EMP_ID = 10 OR EMP_SALARY = 90000;
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 5) LIKE operator : The like operator is used in where clause to search for a specification pattern in column.
 
-SYNTAX : SELECT *FROM EMPLOYEE WHERE EMP_NAME LIKE 'a%';
+Syntax : SELECT *FROM EMPLOYEE WHERE EMP_NAME LIKE 'a%';
 1Q) Give me the records where name starts with k:
 ANS : SELECT *FROM EMPLOYEE WHERE EMP_NAME LIKE 'K%';
 2Q) RECORDS WHOSE NAME ENDS WITH AI:
@@ -69,32 +69,32 @@ ANS: SELECT *FROM EMPLOYEE WHERE EMP_NAME LIKE '%ST%';
 4Q) Records whose name starts with s and ends with kumar
 ANS: SELECT *FROM EMPLOYEE WHERE EMP_NAME LIKE 'S%' AND LIKE 'KUMAR';
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-6) IN-opeator: In opeator is used to test wheather a value is in specified list 
-= :- opeator deals with one value
-IN:- opeator deals with multiple values
+6) IN-operator: In operator is used to test wheather a value is in specified list 
+= :- operator deals with one value
+IN:- operator deals with multiple values
 1Q) Give me the records where department_id is 10 ,20,30
 ANS: SELECT *FROM EMPLOYEE WHERE DEPARTMENT_ID IN(10,20,30);
 2Q) Give me the records whose name starts with sai, madhu, pavan
 ANS : SELECT *FROM EMPLOYEE WHERE FIRST_NAME IN('SAI','MADHU','PAVAN');
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-7)CONCATTENATION opeator:- combines two or more strings or columns
+7)CONCATENATION operator:- combines two or more strings or columns
 1Q) :show me the emp_id salary*10 and append with k and combine both first_name and last_name of all departments (10,20,30)
-ANs : SELECT 'THIS IS MY EMP_ID :-'|| EMP_ID,SALARY*10 ||'k' , FRIST_NAME||LAST_NAME FROM DEPARTMENT_ID IN (10,20,30);
+ANs : SELECT 'THIS IS MY EMP_ID :-'|| EMP_ID,SALARY*10 ||'k' , FIRST_NAME||LAST_NAME FROM DEPARTMENT_ID IN (10,20,30);
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-8) ANY opeator:- it returns the higher value than:
+8) ANY operator:- it returns the higher value than:
 1Q) Give me the salary whose is from  (4200,4800,6000)
 ANS: SELECT *FROM EMPLOYEE WHERE SALARY > ANY (4600,4800,6000);
                           [OR]
      SELECT *FROM EMPLOYEE WHERE SALARY>4200 OR SALARY>4800 OR SALARY > 60000;
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-9) ALL opeator :- it returns the higher value than the given 
+9) ALL operator :- it returns the higher value than the given 
 1Q) SELECT *FROM EMPLOYEE WHERE SALARY> ALL (4200,4800,6000);
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-10) BETWEEN opeator :- it is a range operator used to find the range.
+10) BETWEEN operator :- it is a range operator used to find the range.
 1Q) Give me the record whose salary is >1400 and <24000;
 ANS: SELECT *FROM EMPLOYEE WHERE SALARY BETWEEN 1400 AND 24000;
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-11) ISNULL opeator :- It gives the record of null values in the specified colunm :
+11) ISNULL operator :- It gives the record of null values in the specified colunm :
 1Q) Give me the records where employees phone number is null :
 ANS: SELECT *FROM EMPLOYEE WHERE PHONE_NUM IS NULL;
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -120,7 +120,7 @@ TYPES OF FUNCTIONS :-
 			   |
 			   |->UPPER
 			   |
-			   |->INTICAP
+			   |->INITCAP
 			   |
 			   |->CONCAT
 			   |
@@ -136,22 +136,22 @@ TYPES OF FUNCTIONS :-
 			   |
 			   |->RPAD
 			   |
-			   |->SUBSRING
+			   |->SUBSTRING
 			   |
-			   |->INSTRING
+			   |->INSTR
 			   |
 			   |->ASCII
 			   |
 			   |->REPLACE
 
-1) LOWER :- CONVERTS THE TEXT FROM UPPER CASE TO LOWER CASE 
+1) LOWER :- CONVERTS THE TEXT FROM uppercase TO LOWER CASE 
    SELECT LOWER(FIRST_NAME) FROM EMPLOYEE;
 2) UPPER :- CONVERTS THE TEXT TO UPPERCASE:
    SELECT UPPER(FIRST_NAME) FROM EMPLOYEE WHERE EMP_ID IN (10,20,30)
 3) INITCAP:-IT IS USED TO CONVERT THE FIRST LETTER OF THE STRING TO UPPERCASE:
-   SELECT INTICAP(FIRST_NAME) FROM EMPLOYEE WHERE EMP_ID IN (100,101,102);
-4) CONCAT:- COMBINES TWO COLOUMN:
-   SELECT CONCAT(FRIST_NAME,LAST_NAME) FROM EMPLOYEE WHERE EMP_ID IN (10,20,30);
+   SELECT INITCAP(FIRST_NAME) FROM EMPLOYEE WHERE EMP_ID IN (100,101,102);
+4) CONCAT:- COMBINES TWO COLUMN:
+   SELECT CONCAT(FIRST_NAME,LAST_NAME) FROM EMPLOYEE WHERE EMP_ID IN (10,20,30);
 5) LENGTH:- GIVES HOW MANY CAHR AVI IN THE STRING:
    SELECT LENGTH(FIRST_NAME) FROM EMPLOYEE WHERE DEPARTMENT_ID(10,20,30);
 6) LPAD:- TO ADD SYMBOLS , SPECIAL CHARS,ETC IN THE LEFT HAND SIDE OF THE STRING:
@@ -164,13 +164,13 @@ TYPES OF FUNCTIONS :-
    LEADING :- REMOVES LEFT SIDE := TRIM(LEADING '@')
    TRAILING :- REMOVES RIGHT SIDE := TRIM(TRAILING '@')
    TRIM(FIRST_NAME) :- TO REMOVE THE SPACES IN THE STRING
-10) NVL :- TO ADD A SPECIAL STRING WHEN THE COLOUMN IS NULL:
-    SELECT FIRST_NAME,LAST_NAME NVL(FIRST_NAME,'NOT APPLICABLE') WHERE EMPLOYEE IN (100,101);
+10) NVL :- TO ADD A SPECIAL STRING WHEN THE COLUMN IS NULL:
+    SELECT FIRST_NAME,LAST_NAME NVL(FIRST_NAME,'Not Applicable') WHERE EMPLOYEE IN (100,101);
 11) NVL2:-
-       1Q) IF FIRST_NAME IS NULL THEN PRINT NOT APPLICABLE IF FIRST_NAME EXIST THEN PRINT FIRST_NAME:
-	SELECT FRIST_NAME,LAST_NAME,NVL2(FIRST_NAME,FIRST_NAME,'NOT APPLICABLE') FROM EMPLOYEE WHERE EMP_ID IN(10,11);
+       1Q) IF FIRST_NAME IS NULL THEN PRINT Not Applicable IF FIRST_NAME EXIST THEN PRINT FIRST_NAME:
+	SELECT FIRST_NAME,LAST_NAME,NVL2(FIRST_NAME,FIRST_NAME,'Not Applicable') FROM EMPLOYEE WHERE EMP_ID IN(10,11);
 12) INSTR:-IT IS USED TO FIND THE POSITION OF THE SUB-STRING FROM THE STRING.
-    SYNTAX:- INSTR(STRING/COLOUMN,SUB-STRING,[Start_position],[Occurance])
+    Syntax:- INSTR(STRING/COLUMN,SUB-STRING,[Start_position],[Occurance])
 	Eg 1:- INSTR('CORPORATE FLOOR','OR',4,2)
 				 1234567891011121314)  1ST occurence = 4 && 2nd occurence = 2 if second occurence=even so 
 				 occurence=2 so move from right to left
@@ -225,7 +225,7 @@ Types of Constraint:
 4)Foreign key:- It is used to make the relation BETWEEN two colunms of two tables
 ->If the values present in the parent in parent table then only you can insert the value in child table.
 ->You cant delete any data from parent table until an unless you do nit delete from the child table 
-Creation of table while adding the forigen key:
+Creation of table while adding the FOREIGN KEY:
 Create table department(
 dep_id numeric(20),
 dep_name varchar(20),
@@ -236,7 +236,7 @@ emp_id numeric(10),
 emp_name varchar2(50),
 department_id numeric(10),
 Constraint fk_employee,
-foreignn key (department_id),
+FOREIGN KEY (department_id),
 references department(dep_id)
 );
 5)check Constraint:- Check Constraint is nothing but its allows you to specify a CONDITION on each rows in a table and before inserting it will check that CONDITION.
@@ -254,8 +254,8 @@ supplier_name varchar(20),
 supplier_id int,
 constraint check_supplier_id check (supplier_id BETWEEN 100 and 9999);
 )
-TO alter the table:
-alter table suppliers add constraint check_supplier_id CHECK(SUPPELIER_ID BETWEEN 100 AND 9999);
+TO ALTER the table:
+ALTER table suppliers add constraint check_supplier_id CHECK(SUPPLIER_ID BETWEEN 100 AND 9999);
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 16) TYPES OF JOINS:-Join is used to retrive the data from one or more than one table from the database
 |->CORSS JOINS
@@ -289,7 +289,7 @@ Syntax:=SELECT column_name from table1 right outer join table2 ON table1.column_
 select employee_id,first_name,d.dep_id,d.dep_name,d.dep_id,d.course,d.branch,d.roll_number from employees e right outer join department d on e.department_id = d.dep_id;
 
 5) FULL OUTER JOIN :- Its a combination of the right outer join and left outer join is known as FULL UPPER JOIN.
-Synatx:- select COLOUMN_NAME FROM table1 full outer join table2 ON table1.column_name=table2.column_name.
+Syntax:- select COLOUMN_NAME FROM table1 full outer join table2 ON table1.column_name=table2.column_name.
  select *from employees e full outer join department d on e.department_id = d.dep_id;
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  17) SUBQuery :=  It is a combination of two query in which we involve one parent query and one child query child query will give the input to the parent query and that input will used by the parent 
@@ -304,12 +304,12 @@ select Employee_id , department_id from employees where department_id in (SELECT
 					 |->INTERSECT
 					 |->MINUS
 
-1)UNION :=> UNION opeator combines the output of two queries or more than two queries.
+1)UNION :=> UNION operator combines the output of two queries or more than two queries.
 It will remove the dublicate data.
 select department_id,first_name from employees union select dep_id,Roll_number from department order by first_name;
 
 2)UNION ALL => union all operator joins output of two or more than two table.It allows the duplicates data also.
-In the any set opeator both datatype of both querys should be identical other wise it will throw an error and 
+In the any set operator both datatype of both querys should be identical other wise it will throw an error and 
 the number of rows of first query is equal to the second query.
 select department_id,first_name from employees union all select dep_id,Roll_number from department order by DEPARTMENT_ID;
 
@@ -332,7 +332,7 @@ create or replace public synonym employee_syn1 for hr.employees;
 select *from employee_syn1;
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 20) SEQUENCE :- is an object in oracle that is used to generate a auto number. 
-Synatx :=> Create SEQUENCE sequance_name
+Syntax :=> Create SEQUENCE sequance_name
                   MINVALUE value
 				  MAXVALUE value
 				  START WITH value
@@ -352,7 +352,7 @@ create SEQUENCE emp_seq
 21)Pseudo columns :- Its a in-build column which is available in every table .This column is directely supported by oracle and no need to create it or insert
 		     any values into it.
 ->When ever we create it this column will be automatically created.
-Types of Pseudo COLOUMN:
+Types of Pseudo COLUMN:
 i) ROWID :- Address of the row.
 ii)ROWNUM :- It returns the numbering of the row.
 iii)NEXTVAL :-Used with sequences to get next/current value
@@ -362,12 +362,12 @@ V) LEVEL :- used in hierarchical quries (Connect by).
 22) DUAL table :- It is a dummy table or place holder which is provided by oracle in default there is a row and colunm in given by oracle.
 
 Eg :- retrive the Date from of the data base:
-querie :- Select *from dual;
+query :- Select *from dual;
 
 Eg :- Concat Two Strings :
-querie :- select 'Dileep' || 'T' from dual.
+query :- select 'Dileep' || 'T' from dual.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-23) Substitution opeator :-If we want to give the value at runtime we use Substitution operator.
+23) Substitution operator :-If we want to give the value at runtime we use Substitution operator.
 
 Eg : It Takes an input from User :-
 Select *from employees where employee_id =:Enter_Employee_ID;
@@ -378,14 +378,14 @@ Syntax :- Create [OR REPLACE] [PUBLIC]
 		  FOR [SCHEMA.] OBJECT_NAME;
 		  
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-25) PLSQL :=IT is a programming language provided by Oracle Sql.
+25) PLSQL: It is a programming language provided by Oracle Sql.
           ->Here We can Write multiple queries.
 		  
 		  
 i) Hello World program in PLSQL :
 query:
       BEGIN
-	  DBMS_OUTPUT.PUT_LINE('HELLO WORLD');
+	  DBMS_OUTPUT.PUT_LINE('Hello World');
 	  END;
 	  /
 ii) Accessing Variable :
@@ -396,24 +396,3 @@ query:
 	END;
 	/
 
-
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-1) Write query to display 10% of salary from employee where emp_id not equal tp 100 or last_name is king;
-select salary *0.10 as "10% of salary " from employees where employee_id !=100 or last_name='King';
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
