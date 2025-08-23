@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deepu's Blog Page</title>
+</head>
+<body>
+    <h1>Welcome to Blog Post website</h1>
+    {% for i in post: %}
+        <h2>{{i['title']}}</h2>
+        <p>{{i['subtitle']}}</p>
+    {% endfor %}
+</body>
+</html>
