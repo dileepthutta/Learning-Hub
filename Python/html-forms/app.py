@@ -8,10 +8,14 @@ def home():
     return render_template("index.html")
 
 @app.route("/login",methods=["GET","POST"])
+# To print the form data after the user submitted the form.
 def login():
     if request.method == "POST":
-        return f"<h1>Success form submitted! <h1>"
+        user_name = request.form.get('username')
+        password = request.form.get('password')
+        return f"<h1>Username: {user_name} Password: {password}</h1>"
     else:
         return ""
+
 if __name__ == "__main__":
     app.run(debug=True)
