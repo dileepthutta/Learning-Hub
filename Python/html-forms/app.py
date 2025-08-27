@@ -9,7 +9,7 @@ def home():
 
 @app.route("/login",methods=["GET","POST"])
 # To print the form data after the user submitted the form.
-def login():
+def revive_data():
     if request.method == "POST":
         user_name = request.form.get('username')
         password = request.form.get('password')
