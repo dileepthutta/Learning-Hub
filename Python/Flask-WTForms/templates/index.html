@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <form action="{{url_for('response')}}" method="post">
+
+       <div>{{form.username.label}} {{form.username}}</div>
+
+        <div>{{form.password.label}} {{form.password}}</div>
+
+        <div>{{form.email.label}}    {{form.email}}</div>
+
+        <div>{{form.bio.label}}      {{form.bio}}</div>
+
+        <div>{{form.phone.label}}    {{form.phone}}</div>
+
+        <div>
+            {% for i in form.gender: %}
+             {{i}}   {{i.label}}
+            {% endfor %}
+        </div>
+
+        <div>{{form.course.label}}   {{form.course}}</div>
+
+        <div>{{form.birthdate.label}} {{form.birthdate}}</div>
+
+        <div>{{form.subscribe.label}} {{form.subscribe}}</div>
+
+        <div>{{form.submit}}</div>
+    </form>
+
+</body>
+</html>
